@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>EQUITTY · Pitch Deck Serie Seed</title>
+  <style>
+    @font-face { font-family: "Alexandria"; src: url("../public/fonts/Alexandria/Alexandria-Regular.ttf") format("truetype"); font-weight: 400; }
+    @font-face { font-family: "Alexandria"; src: url("../public/fonts/Alexandria/Alexandria-Medium.ttf") format("truetype"); font-weight: 500; }
+    @font-face { font-family: "Alexandria"; src: url("../public/fonts/Alexandria/Alexandria-SemiBold.ttf") format("truetype"); font-weight: 600; }
+    @font-face { font-family: "Alexandria"; src: url("../public/fonts/Alexandria/Alexandria-Bold.ttf") format("truetype"); font-weight: 700; }
+    @font-face { font-family: "NewBlack"; src: url("../public/fonts/Newblack/NewBlackTypeface-Medium.woff2") format("woff2"); font-weight: 500; }
+    @font-face { font-family: "NewBlack"; src: url("../public/fonts/Newblack/NewBlackTypeface-SemiBold.woff2") format("woff2"); font-weight: 600; }
+    @font-face { font-family: "NewBlack"; src: url("../public/fonts/Newblack/NewBlackTypeface-Bold.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "NewBlack"; src: url("../public/fonts/Newblack/NewBlackTypeface-ExtraBold.woff2") format("woff2"); font-weight: 800; }
+
+    @page { size: 13.333in 7.5in; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0; background: #08070e; color: #fff;
+      font-family: "Alexandria", ui-sans-serif, system-ui, sans-serif;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+
+    .slide {
+      width: 13.333in; height: 7.5in; overflow: hidden;
+      page-break-after: always; break-after: page;
+      position: relative; background: #08070e;
+    }
+    .slide:last-child { page-break-after: auto; break-after: auto; }
+
+    @media screen {
+      body { padding: 28px 0 48px; }
+      .slide { margin: 0 auto 28px; box-shadow: 0 28px 80px rgba(0,0,0,.55); }
+    }
+
+    .orb {
+      position: absolute; border-radius: 999px; pointer-events: none; filter: blur(110px);
+    }
+    .orb.a { top: 40px; left: 80px; width: 320px; height: 320px; background: rgba(0,180,196,.12); }
+    .orb.b { right: 60px; bottom: 40px; width: 280px; height: 280px; background: rgba(0,180,196,.16); }
+    .orb.c { top: -40px; left: 50%; width: 520px; height: 140px; transform: translateX(-50%);
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,180,196,.25), transparent 70%);
+      filter: none; border-radius: 0;
+    }
+
+    .pad {
+      position: relative; z-index: 2; height: 100%;
+      padding: 0.28in 0.48in 0.24in;
+      display: flex; flex-direction: column; min-height: 0;
+    }
+
+    .brand {
+      height: 28px; width: auto;
+      filter: drop-shadow(0 0 18px rgba(0,180,196,.35));
+    }
+    .neon {
+      height: 1px; width: 100%; flex-shrink: 0;
+      background: linear-gradient(90deg, transparent, #00B4C4, transparent);
+      box-shadow: 0 0 12px 1px rgba(0,180,196,.4), 0 0 24px 2px rgba(0,180,196,.2);
+    }
+
+    .top {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0; margin-bottom: 10px;
+    }
+    .eyebrow {
+      color: #00B4C4; font-size: 11px; font-weight: 600;
+      letter-spacing: .35em; text-transform: uppercase;
+    }
+
+    h1, h2, h3 { font-family: "NewBlack", "Alexandria", sans-serif; margin: 0; font-weight: 700; }
+    .title { font-size: 34px; line-height: 1.12; }
+    .grad {
+      background: linear-gradient(90deg, #00B4C4 0%, #006AD5 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .accent { color: #00B4C4; }
+    .lede { color: rgba(255,255,255,.78); font-size: 16px; line-height: 1.55; }
+    .muted { color: rgba(255,255,255,.70); }
+    .dim { color: rgba(255,255,255,.55); }
+
+    .spread { flex: 1; min-height: 0; display: grid; gap: 16px; }
+    .g2 { grid-template-columns: 1fr 1fr; }
+    .g3 { grid-template-columns: 1fr 1fr 1fr; }
+    .g4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    .g5 { grid-template-columns: repeat(5, 1fr); }
+
+    .card {
+      height: 100%;
+      border-radius: 1.8rem;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(15, 26, 42, .82);
+      padding: 22px 24px;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
+    }
+    .soft {
+      background: linear-gradient(145deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+    }
+
+    ul.dots { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; flex: 1; justify-content: space-evenly; gap: 10px; }
+    ul.dots li { display: flex; gap: 10px; color: rgba(255,255,255,.75); font-size: 15px; line-height: 1.45; }
+    ul.dots li::before { content: ""; width: 6px; height: 6px; margin-top: 8px; border-radius: 999px; background: #00B4C4; flex-shrink: 0; }
+
+    .kpi { font-family: "NewBlack", sans-serif; font-variant-numeric: tabular-nums; }
+    .num { font-family: "NewBlack", sans-serif; font-size: 36px; color: rgba(0,180,196,.75); }
+    .n {
+      width: 36px; height: 36px; border-radius: 999px; display: grid; place-items: center;
+      border: 1px solid rgba(0,180,196,.4); background: rgba(0,180,196,.12);
+      color: #00B4C4; font-weight: 700; font-size: 14px; flex-shrink: 0;
+    }
+    .avatar {
+      width: 86px; height: 86px; border-radius: 999px; object-fit: cover;
+      filter: grayscale(1); border: 1px solid rgba(255,255,255,.12);
+    }
+    .bar { height: 10px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+    .bar > i { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, #00B4C4, #006AD5); }
+    .note {
+      border: 1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.02);
+      border-radius: 1.2rem; padding: 12px 16px; color: rgba(255,255,255,.58); font-size: 13px; line-height: 1.45;
+    }
+    .foot {
+      flex-shrink: 0; margin-top: 12px; padding-top: 10px;
+      display: flex; justify-content: space-between; align-items: center;
+      color: rgba(255,255,255,.42); font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+    }
+    .pill {
+      display: inline-flex; align-items: center;
+      padding: 6px 14px; border-radius: 999px;
+      background: rgba(0,180,196,.12); border: 1px solid rgba(0,180,196,.35);
+      color: #00B4C4; font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+    }
+    .coin { width: 4.3in; max-height: 5.2in; object-fit: contain; filter: drop-shadow(0 30px 80px rgba(0,0,0,.45)); }
+  </style>
+</head>
+<body>
+
+<section class="slide">
+  <div class="orb c"></div><div class="orb a"></div><div class="orb b"></div>
+  <div class="pad">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex-shrink:0;">
+      <img class="brand" src="../public/logo-accent.png" alt="EQUITTY" style="height:34px" />
+      <div class="neon"></div>
+    </div>
+    <div class="spread" style="grid-template-columns: 1.15fr .85fr; align-items:center; gap: 28px; margin-top: 12px;">
+      <div>
+        <div class="pill">Serie Seed · Confidencial</div>
+        <h1 class="title" style="font-size:46px;margin-top:18px;">La infraestructura financiera para</h1>
+        <p class="accent" style="font-family:NewBlack,sans-serif;font-size:46px;font-weight:700;line-height:1.05;margin-top:4px;">Activos Reales</p>
+        <p class="lede" style="margin-top:20px;max-width:7.2in;font-size:18px;">Origina, estructura y administra emisiones tokenizadas de RWA desde El Salvador — la única jurisdicción de la región con un régimen integral de licenciamiento.</p>
+      </div>
+      <div style="display:flex;justify-content:center;"><img class="coin" src="assets/coin.png" alt="" /></div>
+    </div>
+    <div class="neon" style="margin-top:8px;"></div>
+    <div class="foot" style="border:0;margin-top:8px;padding-top:0;"><span>www.equitty.com</span><span>Delaware Holdings · Operación El Salvador · DASP / CNAD</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div><div class="orb b"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Índice</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Qué cubre este deck</h2>
+    <p class="lede" style="margin-top:10px;">Ronda Seed completa, más el marco de producto y cumplimiento de la plataforma.</p>
+    <div class="spread g5" style="margin-top:16px;">
+      <div class="card"><div class="num" style="font-size:28px;">01</div><h3 style="font-size:22px;">Tesis</h3><p class="muted" style="font-size:14px;line-height:1.45;">Misión, problema y ventana regulatoria de El Salvador.</p></div>
+      <div class="card"><div class="num" style="font-size:28px;">02</div><h3 style="font-size:22px;">Producto</h3><p class="muted" style="font-size:14px;line-height:1.45;">Marketplace de dos lados, journey y ruta por fases.</p></div>
+      <div class="card"><div class="num" style="font-size:28px;">03</div><h3 style="font-size:22px;">Ronda</h3><p class="muted" style="font-size:14px;line-height:1.45;">Términos Seed, equity, estructura legal y uso de fondos.</p></div>
+      <div class="card"><div class="num" style="font-size:28px;">04</div><h3 style="font-size:22px;">Equipo</h3><p class="muted" style="font-size:14px;line-height:1.45;">Fundadores, mesa de asesores y arquitectura de cumplimiento.</p></div>
+      <div class="card"><div class="num" style="font-size:28px;">05</div><h3 style="font-size:22px;">Inversión</h3><p class="muted" style="font-size:14px;line-height:1.45;">Liquidez, caso Hugo y los siete pasos para suscribir.</p></div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>02 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Nuestra misión</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title" style="font-size:36px;">Convertirnos en el <span class="grad">puente de confianza</span> entre el capital institucional y el valor económico real.</h2>
+    <div class="spread g2" style="margin-top:16px;">
+      <div class="card">
+        <h3 style="font-size:24px;">Misión</h3>
+        <p class="lede">Desbloqueamos oportunidades de tokenización de RWA de alta calidad y en cumplimiento normativo, mediante una gobernanza disciplinada, transparencia total y estándares de nivel institucional.</p>
+        <p class="lede">Conectar capital de EE. UU. y global con activos reales en América Latina mediante una plataforma en cumplimiento, transparente y escalable.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:24px;">Por qué existimos</h3>
+        <p class="lede">El capital existe. Los activos existen. La infraestructura regulada que los conecta, no. EQUITTY está cerrando esa brecha desde El Salvador y escalando por América Latina.</p>
+        <ul class="dots">
+          <li>Sin especulación. Originamos, estructuramos y administramos activos reales.</li>
+          <li>Sin atajos. Primero el licenciamiento. Luego la infraestructura.</li>
+          <li>Solo inversiones escalables, diseñadas para generar confianza de largo plazo.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>03 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div><div class="orb a"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">El problema que resolvemos</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">El capital existe. Los activos existen. El acceso no.</h2>
+    <div class="spread" style="grid-template-rows: auto 1fr; margin-top:14px;">
+      <div class="g2" style="display:grid;gap:20px;">
+        <p class="lede" style="margin:0;">Se proyecta que 16 billones de dólares en activos reales se tokenizarán para 2030. América Latina tiene una de las infraestructuras de inversión más desatendidas del mundo. 2,5 millones de salvadoreños en Estados Unidos envían más de 10 000 millones de dólares al año sin un canal regulado hacia propiedad de largo plazo.</p>
+        <p class="lede" style="margin:0;">Hoy no existe infraestructura regulada que conecte capital global y de diáspora con bienes raíces, infraestructura y activos privados de LatAm. Los canales tradicionales exigen mínimos de 250 000 USD o más. No hay punto retail, ni puerta institucional, ni mercado secundario.</p>
+      </div>
+      <div class="g3" style="display:grid;gap:16px;min-height:0;">
+        <div class="card soft"><div class="kpi" style="font-size:34px;">+2,5B USD</div><p class="muted" style="font-size:15px;line-height:1.45;">Capital de diáspora salvadoreña listo para invertir, hoy sin un riel regulado hacia activos reales.</p></div>
+        <div class="card soft"><div class="kpi" style="font-size:34px;">+200B USD</div><p class="muted" style="font-size:15px;line-height:1.45;">Brecha de financiamiento en infraestructura en LatAm que los mercados tradicionales no cubren.</p></div>
+        <div class="card soft"><div class="kpi" style="font-size:34px;">16T USD</div><p class="muted" style="font-size:15px;line-height:1.45;">Mercado global proyectado de RWA tokenizados para 2030. LatAm todavía no tiene su capa licenciada.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>04 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Tesis regulatoria</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Una ventana que solo existe en El Salvador</h2>
+    <div class="spread g2" style="margin-top:16px;">
+      <div class="card">
+        <h3 style="font-size:24px;">El cuello de botella no es tech</h3>
+        <p class="lede">La tokenización de activos reales —bienes raíces, créditos, participaciones, flujos futuros— convierte un activo en un instrumento digital que se fracciona, transfiere y liquida con más eficiencia que los métodos tradicionales.</p>
+        <p class="lede">Los grandes gestores globales ya lo hacen. América Latina, todavía no — y la razón no es tecnológica: <strong style="color:#fff;">es regulatoria.</strong></p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:24px;">LEAD + CNAD</h3>
+        <p class="lede">El Salvador cambió eso con la <strong style="color:#fff;">Ley de Emisión de Activos Digitales (LEAD)</strong>: un régimen completo de licenciamiento bajo la CNAD, 0 % de impuesto a ganancias de capital sobre activos digitales y el único marco integral de la región.</p>
+        <p class="lede">La tesis de EQUITTY: ser la plataforma licenciada que origina, estructura y administra emisiones tokenizadas desde El Salvador para toda LatAm.</p>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>05 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div><div class="orb b"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Milestones ene – ago 2026</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Lo que ya está hecho</h2>
+    <div class="spread g4" style="margin-top:16px;">
+      <div class="card"><div class="eyebrow">Estructura</div><h3 style="font-size:24px;">Corporativa</h3><p class="lede">Constituida en Delaware (EIN del IRS) con subsidiaria salvadoreña inscrita.</p></div>
+      <div class="card"><div class="eyebrow">Licencia DASP</div><h3 style="font-size:24px;">Expediente CNAD</h3><p class="lede">Expediente presentado ante CNAD bajo el marco LEAD.</p></div>
+      <div class="card"><div class="eyebrow">Demanda</div><h3 class="kpi" style="font-size:28px;">+USD 21M</h3><p class="lede">Cartas de intención firmadas por contrapartes.</p></div>
+      <div class="card"><div class="eyebrow">Equipo</div><h3 style="font-size:24px;">Verificable</h3><p class="lede">Fundadores con historial comprobable en El Salvador y EE. UU.</p></div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>06 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Lo que estamos construyendo</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Un mercado regulado de dos lados</h2>
+    <p class="lede" style="margin-top:10px;max-width:11.4in;">EQUITTY será la capa de infraestructura que conecta inversionistas globales calificados con activos reales validados en América Latina. Un marketplace, dos puertas, un mismo estándar de cumplimiento.</p>
+    <div class="spread g2" style="margin-top:14px;">
+      <div class="card">
+        <h3 style="font-size:24px;">Para inversionistas</h3>
+        <ul class="dots">
+          <li>Acceso a activos latinoamericanos de alta calidad — bienes raíces, infraestructura y crédito privado.</li>
+          <li>Diseñado para permitir participación desde 100 USD (cuando esté licenciado).</li>
+          <li>Incorporación totalmente en cumplimiento: KYC/AML antes de cualquier movimiento de fondos.</li>
+          <li>Visibilidad del desempeño en tiempo real desde el panel del inversionista.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="font-size:24px;">Para socios de activos</h3>
+        <ul class="dots">
+          <li>Desarrolladores inmobiliarios y dueños de infraestructura con un riel de capital regulado.</li>
+          <li>Originadores con respaldo gubernamental y crédito privado.</li>
+          <li>Estructuras SPV listas para oferta tokenizada.</li>
+          <li>Acceso a capital de diáspora e institucional desde una sola plataforma.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>07 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">La plataforma</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Cómo funcionará EQUITTY</h2>
+    <div class="spread g4" style="margin-top:16px;">
+      <div class="card"><div class="num">01</div><h3 style="font-size:24px;">Descubre</h3><p class="lede">Activos reales curados — bienes raíces, infraestructura y crédito privado en LatAm, con información financiera y documentación regulatoria transparente.</p></div>
+      <div class="card"><div class="num">02</div><h3 style="font-size:24px;">Invierte</h3><p class="lede">Incorporación regulada. Diseñada para participación desde 100 USD (cuando esté licenciada), con estructuración institucional a escala.</p></div>
+      <div class="card"><div class="num">03</div><h3 style="font-size:24px;">Gana</h3><p class="lede">Distribuciones y seguimiento del desempeño desde el panel del inversionista, con reportes continuos.</p></div>
+      <div class="card"><div class="num">04</div><h3 style="font-size:24px;">Salida</h3><p class="lede">Mercado secundario a través de la infraestructura de trading, planificado para una fase posterior y sujeto a hitos regulatorios.</p></div>
+    </div>
+    <p class="note" style="margin-top:10px;flex-shrink:0;">Todas las funciones descritas están en desarrollo y sujetas a aprobación regulatoria, licenciamiento y preparación por fases. La plataforma no está abierta a inversión en este momento.</p>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>08 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Ruta de producto · 1 / 2</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Base de cumplimiento y oferta privada</h2>
+    <div class="spread g2" style="margin-top:16px;">
+      <div class="card">
+        <div class="eyebrow">Fase 1</div>
+        <h3 style="font-size:26px;">Base enfocada en cumplimiento</h3>
+        <p class="dim" style="font-size:15px;">Preparar la plataforma para un lanzamiento regulado mientras se construye demanda temprana.</p>
+        <ul class="dots">
+          <li>Sitio web prototipo con educación al inversionista</li>
+          <li>Marco de preselección y estructuración de activos</li>
+          <li>Flujo KYC/AML listo y operativo</li>
+          <li>Licenciamiento CNAD, DASP</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="eyebrow">MVP</div>
+        <h3 style="font-size:26px;">Lanzamiento de oferta privada</h3>
+        <p class="dim" style="font-size:15px;">Primera cohorte, sistemas probados, demanda convertida en operación.</p>
+        <ul class="dots">
+          <li>Onboarding del primer grupo de inversionistas privados</li>
+          <li>Sistemas de cumplimiento, custodia y reportería probados</li>
+          <li>Inicia el desarrollo del Marketplace de Oferta Pública</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>09 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Ruta de producto · 2 / 2</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Oferta pública y liquidez</h2>
+    <div class="spread g2" style="margin-top:16px;">
+      <div class="card">
+        <div class="eyebrow">Fase 2</div>
+        <h3 style="font-size:26px;">Marketplace de oferta pública</h3>
+        <p class="dim" style="font-size:15px;">Institucional y retail en una sola plataforma licenciada.</p>
+        <ul class="dots">
+          <li>Lanzamiento del Marketplace de Oferta Pública (retail)</li>
+          <li>Acceso institucional + retail en una sola plataforma</li>
+          <li>Alianzas con neobancos y fintechs</li>
+          <li>Plataforma educativa</li>
+          <li>Expansión regional de inversionistas [LATAM]</li>
+          <li>Inicia el desarrollo del mercado secundario</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="eyebrow">Fase 3</div>
+        <h3 style="font-size:26px;">Mercado secundario y liquidez</h3>
+        <p class="dim" style="font-size:15px;">Capa de liquidez e inteligencia, post-aprobación.</p>
+        <ul class="dots">
+          <li>Activación del mercado secundario regulado</li>
+          <li>Funcionalidad de compra/venta para tokens emitidos</li>
+          <li>Capa de liquidez introducida post-aprobación</li>
+          <li>Asistente de IA (AI Companion)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>10 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Modelo de negocio</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Monetización de extremo a extremo</h2>
+    <p class="lede" style="margin-top:10px;">Comisiones en originación, emisión, negociación y liquidación. El modelo escala con volumen de activos y actividad transaccional, no con especulación.</p>
+    <div class="spread" style="grid-template-rows: 1.15fr .85fr; margin-top:14px;">
+      <div class="g3" style="display:grid;gap:16px;min-height:0;">
+        <div class="card"><div class="eyebrow">Emisor del activo</div><h3 style="font-size:22px;">Proyecto / originador</h3><p class="lede">Paga comisión por proyecto (ej. 5%) y fees de estructuración y tokenización por adelantado.</p></div>
+        <div class="card"><div class="eyebrow">Plataforma EQUITTY</div><h3 style="font-size:22px;">El riel regulado</h3>
+          <ul class="dots">
+            <li>Fondeo y conversión (banco, tarjeta o stablecoin)</li>
+            <li>Compra de tokens en oferta primaria</li>
+            <li>Compra / venta / negociación en secundario</li>
+            <li>Conversión a stablecoin, suscripciones y retiros</li>
+          </ul>
+        </div>
+        <div class="card"><div class="eyebrow">Inversionistas</div><h3 style="font-size:22px;">Institucional + retail</h3><p class="lede">Comisiones por transacción en cada movimiento. El retiro cierra el ciclo hacia la cuenta bancaria del inversionista.</p></div>
+      </div>
+      <div class="g3" style="display:grid;gap:16px;min-height:0;">
+        <div class="card soft"><p class="lede" style="margin:0;"><strong style="color:#fff;">Fees por adelantado.</strong> El emisor paga estructuración y tokenización antes de que el activo entre a mercado.</p></div>
+        <div class="card soft"><p class="lede" style="margin:0;"><strong style="color:#fff;">Ingreso recurrente.</strong> Custodia, administración continua del activo, métodos de pago y suscripciones.</p></div>
+        <div class="card soft"><p class="lede" style="margin:0;"><strong style="color:#fff;">Escala operativa.</strong> El take-rate crece con el volumen tokenizado y la rotación, no con el precio de un token nativo.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>11 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Detalles de la ronda</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Serie Seed · <span class="accent">USD 5,000,000</span></h2>
+    <div class="spread" style="grid-template-rows: 1.05fr .95fr; margin-top:14px;">
+      <div class="g3" style="display:grid;gap:14px;min-height:0;">
+        <div class="card soft"><div class="dim" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;">Valuación pre-money</div><div class="kpi" style="font-size:30px;">USD 20,000,000</div></div>
+        <div class="card soft"><div class="dim" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;">Objetivo de la ronda</div><div class="kpi" style="font-size:30px;">USD 5,000,000</div></div>
+        <div class="card soft"><div class="dim" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;">Tramo El Salvador</div><div class="kpi" style="font-size:30px;">USD 1,500,000</div></div>
+      </div>
+      <div class="g3" style="display:grid;gap:14px;min-height:0;">
+        <div class="card"><div class="eyebrow">Términos</div><p class="muted" style="margin:0;font-size:15px;line-height:1.7;">Ticket mínimo <strong style="color:#fff;">USD 25,000</strong><br>Precio por acción <strong style="color:#fff;">USD 2.00</strong><br>Instrumento <strong style="color:#fff;">Acciones Preferentes — Seed</strong><br>Preferencia <strong style="color:#fff;">1x no participante</strong><br>Horizonte <strong style="color:#fff;">3 a 5 años</strong></p></div>
+        <div class="card"><div class="eyebrow">Qué recibes</div><p class="lede" style="font-size:15px;">Acciones preferentes de la matriz. Si la empresa se vende, usted cobra antes que fundadores y accionistas comunes. No es garantía de devolución — es un orden de prelación en el cobro.</p></div>
+        <div class="card"><div class="eyebrow">Lo que no entrega</div><p class="lede" style="font-size:15px;">No paga dividendos. No genera flujo mensual. No tiene garantía ni seguro. No tiene mercado secundario. El retorno, si lo hay, viene de la apreciación en un evento de liquidez.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>12 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Estructura legal</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Doble jurisdicción. Un solo equity.</h2>
+    <div class="spread" style="grid-template-rows: 1fr auto; margin-top:14px;">
+      <div class="g2" style="display:grid;gap:16px;min-height:0;">
+        <div class="card">
+          <div class="eyebrow">Sociedad tenedora</div>
+          <h3 style="font-size:26px;">EQUITTY Holdings Inc.</h3>
+          <p class="dim">Delaware, EE. UU.</p>
+          <p class="lede"><strong style="color:#fff;">Qué hace.</strong> Consolida capital y propiedad intelectual.</p>
+          <p class="lede"><strong style="color:#fff;">Licencias.</strong> Ninguna — no opera ni presta servicios.</p>
+          <p class="lede"><strong class="accent">Sus acciones.</strong> Aquí es donde usted invierte.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Sociedad operativa</div>
+          <h3 style="font-size:26px;">EQUITTY Capital, S.A. de C.V.</h3>
+          <p class="dim">El Salvador</p>
+          <p class="lede"><strong style="color:#fff;">Qué hace.</strong> Recibe los ingresos operativos de la tokenización.</p>
+          <p class="lede"><strong style="color:#fff;">Licencias.</strong> Titular de la licencia DASP ante CNAD.</p>
+          <p class="lede"><strong style="color:#fff;">Propiedad.</strong> 100% de EQUITTY Holdings Inc.</p>
+        </div>
+      </div>
+      <div class="card" style="height:auto;">
+        <p class="lede" style="margin:0;"><strong style="color:#fff;">Proceso de inversión: su dinero se queda en El Salvador.</strong> Usted suscribe acciones de la sociedad de Delaware, pero los fondos se depositan directamente en EQUITTY Capital, S.A. de C.V. El capital salvadoreño financia la operación salvadoreña; la participación se obtiene de la entidad americana.</p>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>13 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Destino de los fondos</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">USD 5M dimensionados para 18 meses</h2>
+    <div class="spread g2" style="margin-top:16px;">
+      <div class="card" style="justify-content:space-between;gap:14px;">
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span class="muted">Producto y tecnología</span><strong class="kpi">35%</strong></div><div class="bar"><i style="width:35%"></i></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span class="muted">Originación / generación comercial</span><strong class="kpi">25%</strong></div><div class="bar"><i style="width:25%"></i></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span class="muted">Equipo</span><strong class="kpi">20%</strong></div><div class="bar"><i style="width:20%"></i></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span class="muted">Licenciamiento</span><strong class="kpi">10%</strong></div><div class="bar"><i style="width:10%"></i></div></div>
+        <div><div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span class="muted">Capital de trabajo</span><strong class="kpi">10%</strong></div><div class="bar"><i style="width:10%"></i></div></div>
+      </div>
+      <div class="card">
+        <div class="eyebrow">La curva J</div>
+        <p class="lede" style="font-size:15px;">El gasto estratégico llega antes que el ingreso. No es una debilidad del plan — es el plan.</p>
+        <svg viewBox="0 0 520 168" width="100%" style="margin-top:auto;" aria-hidden>
+          <line x1="28" y1="16" x2="28" y2="132" stroke="rgba(255,255,255,.12)"/>
+          <line x1="28" y1="88" x2="500" y2="88" stroke="rgba(255,255,255,.16)" stroke-dasharray="4 4"/>
+          <path d="M28 70 C 90 78, 140 118, 190 128 C 250 140, 300 118, 340 88 C 390 48, 450 28, 500 22" fill="none" stroke="#00B4C4" stroke-width="2.6"/>
+          <circle cx="70" cy="74" r="4.5" fill="#00B4C4"/>
+          <circle cx="190" cy="128" r="4.5" fill="#00B4C4"/>
+          <circle cx="340" cy="88" r="4.5" fill="#fcf2c5"/>
+          <circle cx="490" cy="24" r="4.5" fill="#00c896"/>
+          <text x="36" y="154" fill="rgba(255,255,255,.5)" font-size="12" font-family="Alexandria">FY2026</text>
+          <text x="168" y="154" fill="rgba(255,255,255,.5)" font-size="12" font-family="Alexandria">FY2027</text>
+          <text x="318" y="154" fill="rgba(255,255,255,.5)" font-size="12" font-family="Alexandria">FY2028</text>
+          <text x="440" y="154" fill="rgba(255,255,255,.5)" font-size="12" font-family="Alexandria">FY29–30</text>
+        </svg>
+        <p class="dim" style="font-size:13px;line-height:1.45;">Construcción y licencia — pérdida · Primeras emisiones — punto más bajo · Equilibrio · Rentabilidad creciente</p>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>14 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Caso salvadoreño</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Hugo App: el modelo de venture funciona aquí</h2>
+    <div class="spread" style="grid-template-rows: auto 1fr; margin-top:14px;">
+      <div class="g3" style="display:grid;gap:16px;">
+        <div class="card" style="height:auto;"><div class="eyebrow">Ronda inicial · 2017</div><div class="kpi" style="font-size:32px;">USD 115K</div><p class="dim">Tres fundadores salvadoreños. Amigos y familia.</p></div>
+        <div class="card" style="height:auto;"><div class="eyebrow">Total a Serie A</div><div class="kpi" style="font-size:32px;">USD 13.6M</div><p class="dim">Capital acumulado antes del evento de liquidez.</p></div>
+        <div class="card" style="height:auto;"><div class="eyebrow">Adquisición · 2021</div><div class="kpi" style="font-size:32px;">USD 150M</div><p class="dim">Delivery Hero adquiere el negocio principal.</p></div>
+      </div>
+      <div class="g2" style="display:grid;gap:16px;min-height:0;">
+        <div class="card">
+          <p class="dim" style="margin:0 0 8px;font-size:13px;">USD 100,000 en Hugo (2017) vs. S&amp;P 500 · ilustrativo</p>
+          <svg viewBox="0 0 480 150" width="100%" style="margin-top:auto;">
+            <line x1="36" y1="18" x2="36" y2="122" stroke="rgba(255,255,255,.12)"/>
+            <line x1="36" y1="122" x2="460" y2="122" stroke="rgba(255,255,255,.12)"/>
+            <polyline points="36,108 140,112 240,96 340,78 450,62" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="2.2"/>
+            <polyline points="36,108 140,108 240,108 330,108 450,22" fill="none" stroke="#00B4C4" stroke-width="2.6" stroke-dasharray="5 4"/>
+            <text x="40" y="142" fill="rgba(255,255,255,.45)" font-size="11">2017</text>
+            <text x="430" y="142" fill="rgba(255,255,255,.45)" font-size="11">2021</text>
+            <text x="330" y="20" fill="#00B4C4" font-size="12">Hugo 1.0M–2.5M</text>
+            <text x="330" y="56" fill="rgba(255,255,255,.55)" font-size="12">S&amp;P 500 233K</text>
+          </svg>
+        </div>
+        <div class="card">
+          <p class="lede" style="margin:0;">Fundada en 2017 con USD 115K. En octubre de 2021, Delivery Hero adquirió el negocio principal por USD 150M: el día en que una participación en papel se volvió dinero real.</p>
+          <p class="lede">Demuestra que el venture funciona en El Salvador y que compradores globales adquieren tecnología local. No es una promesa sobre EQUITTY.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>15 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Evento de liquidez planificada</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Tres caminos. Un caso principal.</h2>
+    <div class="spread" style="grid-template-rows: 1fr auto; margin-top:14px;">
+      <div class="g3" style="display:grid;gap:16px;min-height:0;">
+        <div class="card"><div class="eyebrow">El caso principal</div><h3 style="font-size:24px;">Adquisición estratégica</h3><p class="accent" style="font-size:14px;font-weight:600;">Posibilidad media · 5–8 años</p><p class="lede">Una empresa mayor compra EQUITTY y paga a los accionistas. El escenario más probable.</p></div>
+        <div class="card"><div class="eyebrow">Posibilidad baja</div><h3 style="font-size:24px;">Venta secundaria</h3><p class="dim" style="font-size:14px;font-weight:600;">Variable</p><p class="lede">Un inversionista nuevo compra acciones a los existentes en una ronda posterior. No cuente con él.</p></div>
+        <div class="card"><div class="eyebrow">Posibilidad baja</div><h3 style="font-size:24px;">Oferta pública (IPO)</h3><p class="dim" style="font-size:14px;font-weight:600;">8–12 años</p><p class="lede">Listar en bolsa. Requiere escala e historial auditado. Por completitud, no como expectativa.</p></div>
+      </div>
+      <div class="card" style="height:auto;">
+        <div class="eyebrow">A quién nos visualizamos vendiendo</div>
+        <p class="lede" style="margin:8px 0 0;">El comprador natural es una entidad global de infraestructura de activos digitales —el referente más claro es Coinbase— que ha crecido adquiriendo capacidades reguladas en nuevos mercados. Una plataforma licenciada bajo el marco salvadoreño es justo esa posición regional.</p>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>16 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Equipo fundador</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Construido por operadores</h2>
+    <div class="spread g4" style="margin-top:14px;">
+      <div class="card" style="align-items:center;text-align:center;">
+        <img class="avatar" src="../public/team/martin.png" alt="Martín Cruz" style="object-position:center 15%"/>
+        <h3 style="font-size:18px;">Martín Cruz</h3>
+        <div class="eyebrow" style="letter-spacing:.16em;">Fundador y CEO</div>
+        <p class="muted" style="font-size:13px;line-height:1.4;text-align:left;">Más de 25 años escalando negocios entre Texas y El Salvador. Lidera la visión, la estrategia regulatoria y el licenciamiento DASP.</p>
+        <p class="dim" style="font-size:12px;line-height:1.35;text-align:left;">Desarrollo de mercado EE. UU.–LatAm, adopción blockchain, ejecución de fundador</p>
+      </div>
+      <div class="card" style="align-items:center;text-align:center;">
+        <img class="avatar" src="../public/team/jose.jpg" alt="José Landaverde" style="object-position:center 18%"/>
+        <h3 style="font-size:18px;">José Landaverde</h3>
+        <div class="eyebrow" style="letter-spacing:.16em;">Cofundador y CFO</div>
+        <p class="muted" style="font-size:13px;line-height:1.4;text-align:left;">CPA, más de 20 años en auditoría y consultoría financiera en EE. UU. y El Salvador. Lidera estrategia de inversión y planeación financiera.</p>
+        <p class="dim" style="font-size:12px;line-height:1.35;text-align:left;">Auditoría y consultoría financiera, estrategia de inversión, planeación financiera</p>
+      </div>
+      <div class="card" style="align-items:center;text-align:center;">
+        <img class="avatar" src="../public/team/mario.png" alt="Mario Meléndez"/>
+        <h3 style="font-size:18px;">Mario Meléndez</h3>
+        <div class="eyebrow" style="letter-spacing:.16em;">Cofundador y COO</div>
+        <p class="muted" style="font-size:13px;line-height:1.4;text-align:left;">Más de 15 años en operaciones y marketing de desempeño para EE. UU. Fundador de The Hub Lab. Lidera crecimiento y alianzas.</p>
+        <p class="dim" style="font-size:12px;line-height:1.35;text-align:left;">Escalamiento operativo, estrategia de crecimiento, ejecución en mercado de EE. UU.</p>
+      </div>
+      <div class="card" style="align-items:center;text-align:center;">
+        <img class="avatar" src="../public/team/oscar.png" alt="Oscar Merino" style="object-position:center 10%"/>
+        <h3 style="font-size:18px;">Oscar Merino</h3>
+        <div class="eyebrow" style="letter-spacing:.16em;">Cofundador y CTO</div>
+        <p class="muted" style="font-size:13px;line-height:1.4;text-align:left;">Más de 12 años en infraestructura de misión crítica. Lideró integraciones en Save the Children US. Dirige arquitectura Web3.</p>
+        <p class="dim" style="font-size:12px;line-height:1.35;text-align:left;">Sistemas de misión crítica, integraciones empresariales, infraestructura blockchain</p>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>17 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Mesa de asesores</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Gobernado por líderes desde el día uno</h2>
+    <p class="lede" style="margin-top:10px;">Supervisión estratégica, experiencia sectorial y credibilidad ante reguladores e inversionistas.</p>
+    <div class="spread g4" style="margin-top:14px;">
+      <div class="card" style="align-items:center;text-align:center;">
+        <img class="avatar" src="../public/team/ricardo.jpg" alt="Ricardo Granillo" style="width:72px;height:72px;object-position:center 18%"/>
+        <h3 style="font-size:18px;">Ricardo Granillo</h3>
+        <div class="eyebrow" style="letter-spacing:.12em;font-size:10px;">Miembro de la mesa</div>
+        <p class="lede" style="font-size:15px;">Relaciones regionales con inversionistas y alianzas estratégicas.</p>
+      </div>
+      <div class="card" style="align-items:center;text-align:center;">
+        <img class="avatar" src="../public/team/joseLuis.png" alt="José Luis Ortiz" style="width:72px;height:72px"/>
+        <h3 style="font-size:18px;">José Luis Ortiz</h3>
+        <div class="eyebrow" style="letter-spacing:.12em;font-size:10px;">Asesor</div>
+        <p class="lede" style="font-size:15px;">Fundador de TechyWe.com. Liderazgo en infraestructura tecnológica empresarial.</p>
+      </div>
+      <div class="card" style="align-items:center;text-align:center;">
+        <img class="avatar" src="../public/team/erick.jpg" alt="Erick Chacón" style="width:72px;height:72px"/>
+        <h3 style="font-size:18px;">Erick Chacón</h3>
+        <div class="eyebrow" style="letter-spacing:.12em;font-size:10px;">Asesor</div>
+        <p class="lede" style="font-size:15px;">Fundador de PaySea. Presidente de ASAFINTECH. Liderazgo fintech en El Salvador.</p>
+      </div>
+      <div class="card" style="align-items:center;text-align:center;">
+        <img class="avatar" src="../public/team/mike.jpeg" alt="Mike Angel" style="width:72px;height:72px;object-position:center 18%"/>
+        <h3 style="font-size:18px;">Mike Angel</h3>
+        <div class="eyebrow" style="letter-spacing:.12em;font-size:10px;">Miembro de la mesa</div>
+        <p class="lede" style="font-size:15px;">Relaciones globales con inversionistas y alianzas estratégicas.</p>
+      </div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>18 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Cumplimiento</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">No es un checkbox. Es la base.</h2>
+    <p class="lede" style="margin-top:10px;">No lanzamos primero y regularizamos después. Primero tramitamos, luego construimos infraestructura y lanzamos cuando estemos listos.</p>
+    <div class="spread" style="grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;margin-top:14px;">
+      <div class="card"><h3 style="font-size:22px;">1. Pioneros regulatorios</h3><p class="lede">Expediente DASP presentado ante CNAD bajo LEAD — la única ley integral de activos digitales en América Latina. No operaremos en zona gris. Operaremos sobre la ley.</p></div>
+      <div class="card"><h3 style="font-size:22px;">2. Doble jurisdicción</h3><p class="lede">EQUITTY Holdings Inc. (Delaware) es propietaria de EQUITTY Capital, S.A. de C.V. (El Salvador). Gobernanza institucional bajo ley de EE. UU.; operación bajo el marco salvadoreño.</p></div>
+      <div class="card"><h3 style="font-size:22px;">3. Protección al inversionista</h3><p class="lede">Activos vía SPVs dedicados. Liberación de capital por hitos. KYC/AML antes de mover fondos. Cada oferta se presenta ante CNAD bajo el marco privado aplicable.</p></div>
+      <div class="card"><h3 style="font-size:22px;">4. Transparencia como política</h3><p class="lede">Divulgamos el estado regulatorio de forma clara y pública. Cuando se otorgue la licencia DASP lo comunicaremos. Cuando se cumplan hitos de fase, también.</p></div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>19 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Cómo invertir · 1 / 2</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Siete pasos. Sin letra chica oral.</h2>
+    <div class="spread g2" style="margin-top:14px;">
+      <div class="card" style="flex-direction:row;gap:14px;align-items:flex-start;"><div class="n">1</div><div><h3 style="font-size:20px;margin-bottom:10px;">Documentación</h3><p class="lede" style="font-size:15px;">Firmamos confidencialidad y le entregamos el paquete completo: Memorándum Explicativo, Memorándum de Inversión, Divulgación de Riesgos, Hoja de Términos, modelo financiero y tabla de capitalización.</p></div></div>
+      <div class="card" style="flex-direction:row;gap:14px;align-items:flex-start;"><div class="n">2</div><div><h3 style="font-size:20px;margin-bottom:10px;">Debida diligencia</h3><p class="lede" style="font-size:15px;">Usted revisa, consulta con su propio asesor independiente y nos hace todas las preguntas que necesite. Las respondemos por escrito si lo solicita, incluso las que no nos favorecen.</p></div></div>
+      <div class="card" style="flex-direction:row;gap:14px;align-items:flex-start;"><div class="n">3</div><div><h3 style="font-size:20px;margin-bottom:10px;">Elegibilidad (KYC)</h3><p class="lede" style="font-size:15px;">Al ser una emisión bajo la Regulation S estadounidense, se completa la verificación de identidad y origen de fondos (KYC).</p></div></div>
+      <div class="card" style="flex-direction:row;gap:14px;align-items:flex-start;"><div class="n">4</div><div><h3 style="font-size:20px;margin-bottom:10px;">Contrato de suscripción</h3><p class="lede" style="font-size:15px;">Se define su monto, número de acciones y porcentaje resultante. Este es el documento vinculante: los términos definitivos constan aquí, no en materiales promocionales.</p></div></div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>20 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div>
+  <div class="pad">
+    <div class="top"><img class="brand" src="../public/logo-accent.png" alt="EQUITTY" /><span class="eyebrow">Cómo invertir · 2 / 2</span></div>
+    <div class="neon" style="margin-bottom:14px;"></div>
+    <h2 class="title">Firma, fondos y reportería</h2>
+    <div class="spread g3" style="margin-top:14px;">
+      <div class="card"><div class="n">5</div><h3 style="font-size:22px;">Carta de reconocimiento</h3><p class="lede">Usted declara, punto por punto y con sus iniciales, haber recibido y comprendido cada documento y cada riesgo. Le pedimos expresamente que no firme si no ha leído.</p></div>
+      <div class="card"><div class="n">6</div><h3 style="font-size:22px;">Fondos y emisión</h3><p class="lede">Los fondos se depositan en EQUITTY Capital, S.A. de C.V. en El Salvador. Holdings emite las acciones preferentes a su nombre y usted queda en la tabla de capitalización.</p></div>
+      <div class="card"><div class="n">7</div><h3 style="font-size:22px;">Reportería periódica</h3><p class="lede">Como accionista recibe información periódica sobre el desempeño de la Compañía, con derechos de información e inspección conforme a los Estatutos y al derecho de Delaware.</p></div>
+    </div>
+    <div class="foot"><span>EQUITTY · Serie Seed · Confidencial</span><span>21 / 22</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="orb c"></div><div class="orb a"></div><div class="orb b"></div>
+  <div class="pad">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px;flex-shrink:0;">
+      <img class="brand" src="../public/logo-accent.png" alt="EQUITTY" style="height:34px" />
+      <div class="neon"></div>
+    </div>
+    <div class="spread" style="grid-template-columns: 1.15fr .85fr; align-items:center; gap:28px; margin-top:12px;">
+      <div>
+        <div class="pill">Serie Seed · Confidencial</div>
+        <h1 class="title" style="font-size:42px;margin-top:16px;">Construyamos el riel</h1>
+        <p class="accent" style="font-family:NewBlack,sans-serif;font-size:40px;font-weight:700;line-height:1.1;">que LatAm todavía no tiene.</p>
+        <p class="lede" style="margin-top:18px;max-width:7.2in;">Este material es informativo y confidencial. No constituye una oferta de venta, solicitud de compra ni invitación a invertir. Los términos definitivos constan únicamente en el contrato de suscripción y en los documentos de la ronda.</p>
+        <p style="margin-top:24px;font-family:NewBlack,sans-serif;font-size:22px;">www.equitty.com</p>
+        <p class="dim" style="margin-top:6px;font-size:15px;">info@equitty.com</p>
+      </div>
+      <div style="display:flex;justify-content:center;"><img class="coin" src="assets/coin.png" alt="" /></div>
+    </div>
+    <div class="foot"><span>EQUITTY Holdings Inc. · EQUITTY Capital, S.A. de C.V.</span><span>22 / 22</span></div>
+  </div>
+</section>
+
+</body>
+</html>
